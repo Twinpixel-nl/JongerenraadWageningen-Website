@@ -125,7 +125,7 @@ ul { list-style: none; }
 }
 
 .logo img {
-    height: 120px;
+    height: 80px;
     display: block;
 }
 
@@ -327,7 +327,7 @@ ul { list-style: none; }
     text-align: center;
 }
 
-.logo-footer img { height: 45px; margin-bottom: 1rem; }
+.logo-footer img { height: 120px; margin-bottom: 1rem; }
 .footer h4 { color: var(--white); margin-bottom: 1rem; }
 .footer ul li { margin-bottom: 0.5rem; }
 .footer a { color: #ccc; }
