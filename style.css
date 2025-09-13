@@ -386,3 +386,32 @@ ul { list-style: none; }
         justify-content: flex-start;
     }
 }
+
+/* --- Over Ons Pagina Specifieke Stijlen --- */
+
+.page-header {
+    background-color: var(--light-gray);
+    text-align: center;
+    padding-top: 120px; /* Meer padding omdat de header eroverheen staat */
+}
+
+.members-page-section {
+    background-color: #fff;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* We kunnen de bestaande .member-card stijl gebruiken */
+/* Eventuele toevoegingen kunnen hier */
+.member-card .member-bio {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+}
+.member-card .member-bio p {
+    margin-bottom: 0;
+}

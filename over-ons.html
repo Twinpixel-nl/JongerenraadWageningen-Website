@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Ons - Jongerenraad Wageningen</title>
+    <!-- Alle links naar fonts en CSS, net als in index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> <!-- Link naar de homepage -->
+                <img src="logo.png" alt="Logo Jongerenraad Wageningen">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <!-- Update de link naar de 'Over Ons' pagina -->
+                    <li><a href="over-ons.html">Over Ons</a></li> 
+                    <li><a href="index.html#topics">Thema's</a></li>
+                    <li><a href="#">Vergaderingen</a></li>
+                    <li><a href="index.html#cta">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="menu openen/sluiten">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header content-section">
+            <div class="container">
+                <h1 class="section-title">Maak kennis met de Raad</h1>
+                <p class="section-intro">Dit zijn de jongeren die zich inzetten om jouw stem te vertegenwoordigen in Wageningen. Heb je een vraag voor een specifiek lid? Neem gerust contact op!</p>
+            </div>
+        </section>
+
+        <section class="members-page-section content-section">
+            <div class="container">
+                <!-- HIER WORDEN DE LEDEN DYNAMISCH INGELADEN -->
+                <div id="members-container" class="members-grid">
+                    <p>Leden worden geladen...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+ <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo-footer">
+                        <img src="/assets/images/Logo transparant.png transparant.png" alt="Logo Jongerenraad Wageningen">
+                    </a>
+                    <p>Jouw stem in de lokale politiek van Wageningen.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="#about">Over Ons</a></li>
+                        <li><a href="#topics">Thema's</a></li>
+                        <li><a href="#">Vergaderingen</a></li>
+                        <li><a href="#cta">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Volg ons</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jr.wageningen/" aria-label="Volg ons op Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+                  <div class="footer-bottom">
+        <p>
+          &copy; 2025 Jongerenraad Wageningen. |
+          <a href="https://twinpixel.nl/">Made with ❤️ by TwinPixel</a>
+        </p>
+      </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js" defer></script>
+    <!-- Specifiek script voor het laden van leden -->
+    <script src="load-members.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# admin/config.yml
+
+backend:
+  name: git-gateway
+  branch: main # Of 'master', afhankelijk van je standaard branch in GitHub
+
+# Locatie voor media (zoals profielfoto's)
+media_folder: "assets/uploads" 
+public_folder: "/assets/uploads"
+
+# Dit definieert de content types die je kunt beheren. We maken er één: Leden.
+collections:
+  - name: "leden_config"
+    label: "Leden"
+    files:
+      - name: "leden"
+        label: "Ledenlijst"
+        file: "_data/leden.json" # Hier worden alle leden opgeslagen
+        description: "Beheer hier de leden van de Jongerenraad"
+        fields:
+          - name: "ledenlijst"
+            label: "Alle Leden"
+            widget: "list"
+            fields:
+              - { label: "Naam", name: "naam", widget: "string" }
+              - { label: "Functie / Rol", name: "functie", widget: "string" }
+              - { label: "Profielfoto", name: "foto", widget: "image" }
+              - { label: "Korte Bio", name: "bio", widget: "markdown", hint: "Een korte introductie van het lid. Je kunt hier **vetgedrukte** tekst gebruiken." }
