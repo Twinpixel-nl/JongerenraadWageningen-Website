@@ -343,16 +343,26 @@ ul { list-style: none; }
     font-size: 0.9rem;
 }
 
-/* --- Animaties --- */
+
+/* --- Animaties (Aangepast voor zichtbaarheid) --- */
 .fade-in {
-    opacity: 0;
+    /* De opacity: 0; is hier WEGGEHAALD. Alles is nu standaard zichtbaar. */
     transform: translateY(20px);
+    opacity: 0; /* We houden deze hier, zodat het JS het kan overschrijven */
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Fallback voor als JavaScript niet laadt */
+@media (prefers-reduced-motion: no-preference) {
+    .fade-in {
+        /* Start de animatie alleen als de browser het ondersteunt */
+        transition-delay: 0.1s; /* Een kleine vertraging kan helpen */
+    }
 }
 
 /* --- Media Queries (Desktop & Tablet) --- */
