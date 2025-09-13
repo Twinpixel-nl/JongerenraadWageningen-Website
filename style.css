@@ -344,17 +344,17 @@ ul { list-style: none; }
 }
 
 
-/* --- Animaties (Aangepast voor zichtbaarheid) --- */
+/* --- Animaties (Gecorrigeerd) --- */
 .fade-in {
-    /* De opacity: 0; is hier WEGGEHAALD. Alles is nu standaard zichtbaar. */
-    transform: translateY(20px);
-    opacity: 0; /* We houden deze hier, zodat het JS het kan overschrijven */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* We verwijderen de opacity: 0; regel volledig! */
+    /* De elementen zijn nu standaard zichtbaar. */
+    transition: transform 0.6s ease-out;
+    transform: translateY(20px); /* Start iets lager */
 }
 
+/* Deze class wordt door JavaScript toegevoegd als het element in beeld komt */
 .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* Beweeg naar de eindpositie */
 }
 
 /* Fallback voor als JavaScript niet laadt */
