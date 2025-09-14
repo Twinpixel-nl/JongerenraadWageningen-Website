@@ -1,0 +1,5 @@
+{
+  "layout": "lid-template.html",
+  "tags": "leden",
+  "permalink": "/leden/{{ page.fileSlug }}/"
+}

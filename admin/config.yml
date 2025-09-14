@@ -1,24 +1,24 @@
-# admin/config.yml
-
+# Vertelt Netlify CMS hoe het met je GitHub repo moet praten
 backend:
   name: git-gateway
-  branch: main # Of 'master', afhankelijk van je standaard branch in GitHub
+  branch: main # Gebruik 'main' of 'master', afhankelijk van je repo
 
-# Locatie voor media (zoals profielfoto's)
-media_folder: "assets/uploads" 
-public_folder: "/assets/uploads"
+# Waar geüploade foto's worden opgeslagen
+media_folder: "src/assets/images/uploads"
+# Hoe de website de foto's moet benaderen
+public_folder: "/assets/images/uploads"
 
-# Dit definieert de content types die je kunt beheren. We maken er één: Leden.
+# Definieer de content types
 collections:
-  - name: "leden"
-    label: "Leden"
-    folder: "src/leden" # We slaan nu elk lid op als een apart .md bestand
-    create: true
-    slug: "{{naam}}" # De bestandsnaam wordt de naam van het lid
-    fields:
+  - name: "leden" # De technische naam
+    label: "Leden" # De naam in het CMS-menu
+    folder: "src/leden" # CRUCIAAL: Hier worden de .md-bestanden opgeslagen
+    create: true # Sta toe dat nieuwe leden worden aangemaakt
+    slug: "{{naam}}" # Maakt bestandsnaam van de naam (bv. 'Twan Meurs' -> 'twan-meurs.md')
+    fields: # De invulvelden voor elk lid
       - {label: "Naam", name: "naam", widget: "string"}
       - {label: "Functie", name: "functie", widget: "string"}
       - {label: "Foto", name: "foto", widget: "image"}
+      - {label: "Instagram URL (optioneel)", name: "instagram", widget: "string", required: false}
+      - {label: "LinkedIn URL (optioneel)", name: "linkedin", widget: "string", required: false}
       - {label: "Bio", name: "body", widget: "markdown"}
-      - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
-      - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
