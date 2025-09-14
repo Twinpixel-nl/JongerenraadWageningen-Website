@@ -1,179 +1,96 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jongerenraad Wageningen - Jouw Stem in de Stad</title>
-    <meta name="description" content="De Jongerenraad Wageningen is dé plek waar jouw ideeën voor een beter Wageningen gehoord worden. Praat mee en maak het verschil!">
+---
+layout: "layout.html"
+title: "Jongerenraad Wageningen - Jouw Stem in de Stad"
+description: "De Jongerenraad Wageningen is dé plek waar jouw ideeën voor een beter Wageningen gehoord worden. Praat mee en maak het verschil!"
+---
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Sectie 1: Hero -->
+<section id="hero" class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="fade-in">Jouw Stem in Wageningen.</h1>
+            <p class="fade-in">De Jongerenraad is dé plek waar jouw ideeën voor een beter Wageningen gehoord worden. Wij praten namens jou met de gemeente.</p>
+            <div class="hero-buttons fade-in">
+                <a href="#cta" class="btn btn-primary">Deel je idee</a>
+                <a href="#about" class="btn btn-secondary">Ontdek wat we doen</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+<!-- Sectie 2: Wie zijn wij? -->
+<section id="about" class="about-section content-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Wij zijn de Jongerenraad Wageningen.</h2>
+        <p class="section-intro fade-in">Wij zijn een groep enthousiaste jongeren tussen de 15 en 27 jaar die opkomen voor de belangen van alle jongeren in de stad. Van betere sportplekken tot mentale gezondheid: wij zetten jouw onderwerpen op de agenda.</p>
+        <a href="/over-ons.html" class="btn btn-primary fade-in">Maak kennis met de raad</a>
+    </div>
+</section>
 
-    <!-- JavaScript (defer ensures it runs after HTML parsing) -->
-    <script src="main.js" defer></script>
-    <head>
-    <!-- ... andere head-elementen ... -->
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-
-</head>
-</head>
-<body>
-
-    <header class="header">
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <img src="assets/images/Logo transparant.png" alt="Logo Jongerenraad Wageningen">
+<!-- Sectie 3: Maak Kennis met de Raad (Dynamisch) -->
+<section id="members" class="members-section content-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Ontmoet onze Leden</h2>
+        <div class="members-grid">
+            {# 
+              Loop door de 'leden' collectie.
+              'reverse' toont de nieuwste leden eerst.
+              'limit(3)' pakt alleen de eerste 3 uit de lijst.
+            #}
+            {%- for lid in collections.leden | reverse | limit(3) -%}
+            <a href="{{ lid.url }}" class="member-card-link">
+                <article class="member-card">
+                    {# Let op: lid.data is nodig om bij de velden te komen #}
+                    <img src="{{ lid.data.foto }}" alt="Profielfoto van {{ lid.data.naam }}">
+                    <h3>{{ lid.data.naam }}</h3>
+                    <p>{{ lid.data.functie }}</p>
+                </article>
             </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="over-ons.html">Over Ons</a></li>
-                    <li><a href="thema's.html">Thema's</a></li>
-                    <li><a href="vergaderingen.html">Vergaderingen</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="menu openen/sluiten">
-                <span class="hamburger"></span>
-            </button>
+            {%- endfor -%}
         </div>
-    </header>
-
-    <main>
-        <!-- Sectie 1: Hero -->
-        <section id="hero" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="fade-in">Jouw Stem in Wageningen.</h1>
-                    <p class="fade-in">De Jongerenraad is dé plek waar jouw ideeën voor een beter Wageningen gehoord worden. Wij praten namens jou met de gemeente.</p>
-                    <div class="hero-buttons fade-in">
-                        <a href="#cta" class="btn btn-primary">Deel je idee</a>
-                        <a href="#about" class="btn btn-secondary">Ontdek wat we doen</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sectie 2: Wie zijn wij? -->
-        <section id="about" class="about-section content-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Wij zijn de Jongerenraad Wageningen.</h2>
-                <p class="section-intro fade-in">Wij zijn een groep enthousiaste jongeren tussen de 15 en 27 jaar die opkomen voor de belangen van alle jongeren in de stad. Van betere sportplekken tot mentale gezondheid: wij zetten jouw onderwerpen op de agenda.</p>
-                <a href="#" class="btn btn-primary fade-in">Maak kennis met de raad</a>
-            </div>
-        </section>
-
-        <!-- Sectie 3: Maak Kennis met de Raad -->
-        <section id="members" class="members-section content-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Ontmoet onze Leden</h2>
-                <div class="members-grid">
-                    <!-- Dit zou dynamisch geladen worden vanuit een CMS -->
-                    <article class="member-card fade-in">
-                        <img src="assets/images/Twan hoofd.jpg" alt="Profielfoto van Twan Meurs">
-                        <h3>Twan Meurs</h3>
-                        <p>Voorzitter</p>
-                    </article>
-                    <article class="member-card fade-in">
-                        <img src="https://via.placeholder.com/200" alt="Profielfoto van een ander lid">
-                        <h3>Lid 3</h3>
-                        <p>Communicatie</p>
-                    </article>
-                        <article class="member-card fade-in">
-                        <img src="https://via.placeholder.com/200" alt="Profielfoto van een ander lid">
-                        <h3>Lid 3</h3>
-                        <p>Communicatie</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sectie 4: Waar werken we aan? -->
-        <section id="topics" class="topics-section content-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Actuele Thema's</h2>
-                <div class="topics-grid">
-                    <article class="topic-card fade-in">
-                        <div class="card-content">
-                            <h3>Wonen</h3>
-                            <p>Betaalbare woningen voor studenten en starters. Hoe pakken we dit aan?</p>
-                            <a href="#" class="card-link">Lees meer</a>
-                        </div>
-                    </article>
-                    <article class="topic-card fade-in">
-                        <div class="card-content">
-                            <h3>Veiligheid</h3>
-                            <p>Hoe zorgen we voor veilige uitgaansplekken en fietsroutes in de stad?</p>
-                            <a href="#" class="card-link">Denk mee</a>
-                        </div>
-                    </article>
-                    <article class="topic-card fade-in">
-                        <div class="card-content">
-                            <h3>Volgende Vergadering</h3>
-                            <p>Thema: Duurzaamheid. Kom langs en praat mee over de toekomst van Wageningen.</p>
-                            <a href="#" class="card-link">Hoe doe je mee?</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sectie 5: Call to Action -->
-        <section id="cta" class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 class="fade-in">Heb jij een idee of een vraag?</h2>
-                    <p class="fade-in">Loop je ergens tegenaan in de stad? Of heb je een briljant idee om Wageningen leuker te maken? We horen het graag. Jouw input is voor ons goud waard.</p>
-                    <a href="#" class="btn btn-light fade-in">Neem Contact Op</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#" class="logo-footer">
-                        <img src="/assets/images/Logo transparant.png transparant.png" alt="Logo Jongerenraad Wageningen">
-                    </a>
-                    <p>Jouw stem in de lokale politiek van Wageningen.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigatie</h4>
-                    <ul>
-                        <li><a href="over-ons.html">Over Ons</a></li>
-                        <li><a href="thema's.html">Thema's</a></li>
-                        <li><a href="vergaderingen.html">Vergaderingen</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Volg ons</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/jr.wageningen/" aria-label="Volg ons op Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-
-                  <div class="footer-bottom">
-        <p>
-          &copy; 2025 Jongerenraad Wageningen. |
-          <a href="https://twinpixel.nl/">Made with ❤️ by TwinPixel</a>
-        </p>
-      </div>
+        <div style="text-align: center; margin-top: 2rem;">
+             <a href="/over-ons.html" class="btn btn-primary fade-in">Bekijk alle leden</a>
         </div>
-    </footer>
-<script src="main.js" defer></script>
-<script src="load-home-members.js" defer></script>
-</body>
-</html>
-</body>
-</html>
+    </div>
+</section>
+
+<!-- Sectie 4: Waar werken we aan? -->
+<section id="topics" class="topics-section content-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Actuele Thema's</h2>
+        <div class="topics-grid">
+            <article class="topic-card fade-in">
+                <div class="card-content">
+                    <h3>Wonen</h3>
+                    <p>Betaalbare woningen voor studenten en starters. Hoe pakken we dit aan?</p>
+                    <a href="#" class="card-link">Lees meer</a>
+                </div>
+            </article>
+            <article class="topic-card fade-in">
+                <div class="card-content">
+                    <h3>Veiligheid</h3>
+                    <p>Hoe zorgen we voor veilige uitgaansplekken en fietsroutes in de stad?</p>
+                    <a href="#" class="card-link">Denk mee</a>
+                </div>
+            </article>
+            <article class="topic-card fade-in">
+                <div class="card-content">
+                    <h3>Volgende Vergadering</h3>
+                    <p>Thema: Duurzaamheid. Kom langs en praat mee over de toekomst van Wageningen.</p>
+                    <a href="#" class="card-link">Hoe doe je mee?</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Sectie 5: Call to Action -->
+<section id="cta" class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="fade-in">Heb jij een idee of een vraag?</h2>
+            <p class="fade-in">Loop je ergens tegenaan in de stad? Of heb je een briljant idee om Wageningen leuker te maken? We horen het graag. Jouw input is voor ons goud waard.</p>
+            <a href="/contact.html" class="btn btn-light fade-in">Neem Contact Op</a>
+        </div>
+    </div>
+</section>

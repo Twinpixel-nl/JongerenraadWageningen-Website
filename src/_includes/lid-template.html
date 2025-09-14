@@ -1,0 +1,40 @@
+---
+layout: "layout.html"
+title: "{{ naam }} - Jongerenraad Wageningen"
+---
+
+<section class="member-detail-section content-section">
+    <div class="container">
+        <div class="member-detail-grid">
+            <div class="member-photo">
+                <img src="{{ foto }}" alt="Profielfoto van {{ naam }}">
+            </div>
+            <div class="member-info">
+                <h1>{{ naam }}</h1>
+                <h2 class="member-function">{{ functie }}</h2>
+                
+                {# Toon de social media iconen alleen als de link is ingevuld in het CMS #}
+                <div class="social-links">
+                    {% if instagram %}
+                        <a href="{{ instagram }}" target="_blank" aria-label="Instagram van {{ naam }}">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    {% endif %}
+                    {% if linkedin %}
+                        <a href="{{ linkedin }}" target="_blank" aria-label="LinkedIn van {{ naam }}">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="member-bio">
+                    {# 'content' is de speciale variabele voor de hoofdtekst (bio) uit het markdown-bestand #}
+                    {{ content | safe }}
+                </div>
+            </div>
+        </div>
+        <div class="back-to-overview">
+            <a href="/over-ons.html" class="btn btn-secondary">&larr; Terug naar alle leden</a>
+        </div>
+    </div>
+</section>
