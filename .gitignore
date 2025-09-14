@@ -1,7 +1,7 @@
-# De map met de gebouwde website
+# Gemaakte output van Eleventy
 _site/
 
-# De map met alle geïnstalleerde packages
+# Dependencies van Node.js
 node_modules/
 
 # Mac-specifieke systeembestanden

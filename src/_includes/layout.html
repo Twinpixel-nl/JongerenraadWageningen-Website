@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Gebruik de titel van de specifieke pagina, of een standaardtitel #}
+    <title>{{ title or "Jongerenraad Wageningen" }}</title>
+    <meta name="description" content="{{ description or 'De Jongerenraad Wageningen is dé plek waar jouw ideeën voor een beter Wageningen gehoord worden. Praat mee en maak het verschil!' }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Stylesheet - Correct pad naar de assets map -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <img src="/assets/images/Logo transparant.png" alt="Logo Jongerenraad Wageningen">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/over-ons.html">Over Ons</a></li>
+                    <li><a href="/thema's.html">Thema's</a></li>
+                    <li><a href="/vergaderingen.html">Vergaderingen</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="menu openen/sluiten">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        {# Hier wordt de unieke content van elke pagina ingevoegd #}
+        {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="/" class="logo-footer">
+                        {# Ik heb de dubbele bestandsnaam gecorrigeerd #}
+                        <img src="/assets/images/Logo transparant.png" alt="Logo Jongerenraad Wageningen">
+                    </a>
+                    <p>Jouw stem in de lokale politiek van Wageningen.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="/over-ons.html">Over Ons</a></li>
+                        <li><a href="/thema's.html">Thema's</a></li>
+                        <li><a href="/vergaderingen.html">Vergaderingen</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Volg ons</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jr.wageningen/" aria-label="Volg ons op Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                  &copy; 2025 Jongerenraad Wageningen. |
+                  <a href="https://twinpixel.nl/">Made with ❤️ by TwinPixel</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Algemeen JavaScript-bestand - Correct pad -->
+    <script src="/assets/js/main.js" defer></script>
+
+</body>
+</html>
