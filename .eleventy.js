@@ -1,12 +1,15 @@
+// in .eleventy.js
+
 module.exports = function(eleventyConfig) {
-  // We voegen alleen de assets toe, verder geen configuratie die kan storen.
+  
+  // Kopieer de 'assets' map.
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  return {
-    // Deze regels zijn cruciaal om .html als template te zien.
-    htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
+  // VOEG DEZE REGEL TOE: Kopieer de 'admin' map van de root naar de output.
+  eleventyConfig.addPassthroughCopy("admin");
 
+  return {
+    // ... de rest van je config ...
     dir: {
       input: "src",
       output: "_site",
