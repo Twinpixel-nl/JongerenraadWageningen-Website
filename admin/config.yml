@@ -10,19 +10,15 @@ public_folder: "/assets/uploads"
 
 # Dit definieert de content types die je kunt beheren. We maken er één: Leden.
 collections:
-  - name: "leden_config"
+  - name: "leden"
     label: "Leden"
-    files:
-      - name: "leden"
-        label: "Ledenlijst"
-        file: "_data/leden.json" # Hier worden alle leden opgeslagen
-        description: "Beheer hier de leden van de Jongerenraad"
-        fields:
-          - name: "ledenlijst"
-            label: "Alle Leden"
-            widget: "list"
-            fields:
-              - { label: "Naam", name: "naam", widget: "string" }
-              - { label: "Functie / Rol", name: "functie", widget: "string" }
-              - { label: "Profielfoto", name: "foto", widget: "image" }
-              - { label: "Korte Bio", name: "bio", widget: "markdown", hint: "Een korte introductie van het lid. Je kunt hier **vetgedrukte** tekst gebruiken." }
+    folder: "src/leden" # We slaan nu elk lid op als een apart .md bestand
+    create: true
+    slug: "{{naam}}" # De bestandsnaam wordt de naam van het lid
+    fields:
+      - {label: "Naam", name: "naam", widget: "string"}
+      - {label: "Functie", name: "functie", widget: "string"}
+      - {label: "Foto", name: "foto", widget: "image"}
+      - {label: "Bio", name: "body", widget: "markdown"}
+      - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+      - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
