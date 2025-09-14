@@ -1,0 +1,8 @@
+# De map met de gebouwde website
+_site/
+
+# De map met alle geïnstalleerde packages
+node_modules/
+
+# Mac-specifieke systeembestanden
+.DS_Store
