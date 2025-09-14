@@ -28,28 +28,6 @@ templateEngine: "njk"
     </div>
 </section>
 
-<!-- Sectie 3: Maak Kennis met de Raad (Dynamisch) -->
-<section id="members" class="members-section content-section">
-    <div class="container">
-        <h2 class="section-title fade-in">Ontmoet onze Leden</h2>
-        <div class="members-grid">
-            {# Dit is de juiste manier om de eerste 3 te pakken #}
-{# We gebruiken de slice-methode op de array voordat de loop start #}
-{%- for lid in collections.leden | reverse | slice(0, 3) -%}
-<a href="{{ lid.url }}" class="member-card-link">
-    <article class="member-card">
-        <img src="{{ lid.data.foto }}" alt="Profielfoto van {{ lid.data.naam }}">
-        <h3>{{ lid.data.naam }}</h3>
-        <p>{{ lid.data.functie }}</p>
-    </article>
-</a>
-{%- endfor -%}
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-             <a href="/over-ons.html" class="btn btn-primary fade-in">Bekijk alle leden</a>
-        </div>
-    </div>
-</section>
 
 <!-- Sectie 4: Waar werken we aan? -->
 <section id="topics" class="topics-section content-section">
