@@ -22,3 +22,21 @@ collections:
       - {label: "Instagram URL (optioneel)", name: "instagram", widget: "string", required: false}
       - {label: "LinkedIn URL (optioneel)", name: "linkedin", widget: "string", required: false}
       - {label: "Bio", name: "body", widget: "markdown"}
+
+       # VERVANG DE OUDE VERGADERINGEN COLLECTIE MET DIT
+  - name: "paginas" # Een algemene collectie voor losse pagina's
+    label: "Pagina's"
+    files:
+      # We beheren het rooster nu als één enkel bestand
+      - file: "src/_data/rooster.json" # De data wordt opgeslagen in een JSON-bestand
+        label: "Vergaderrooster"
+        name: "rooster"
+        fields:
+          - {label: "Vaste Titel Vergadering", name: "vaste_titel", widget: "string", default: "Grote vergadering"}
+          - {label: "Vaste Locatie", name: "vaste_locatie", widget: "string", default: "Gemeentehuis Wageningen"}
+          - label: "Vergaderdata"
+            name: "datums"
+            widget: "list" # Dit maakt een herhaalbare lijst
+            fields:
+              - {label: "Datum", name: "datum", widget: "date", format: "DD-MM-YYYY"}
+              - {label: "Notulist / Opening", name: "notulist", widget: "string", default: "TBA"}

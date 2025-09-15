@@ -634,3 +634,127 @@ ul { list-style: none; }
 .contact-info-list p {
     margin: 0;
 }
+/* --- Bedankpagina Stijlen --- */
+.thank-you-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh; /* Zorgt ervoor dat het de meeste schermruimte inneemt */
+    text-align: center;
+}
+
+.thank-you-content i {
+    font-size: 5rem;
+    color: var(--primary-green);
+    margin-bottom: 2rem;
+}
+
+.thank-you-content h1 {
+    margin-bottom: 1rem;
+}
+
+.thank-you-content p {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+}
+
+/* --- Vergaderingen Pagina: Tabel Stijlen --- */
+.meetings-table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Zorgt voor horizontaal scrollen als het echt niet past */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.table-title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.meetings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.meetings-table th, 
+.meetings-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.meetings-table thead {
+    background-color: var(--dark-green-text);
+    color: var(--white);
+}
+
+.meetings-table th {
+    font-weight: 600;
+}
+
+.meetings-table tbody tr:nth-of-type(even) {
+    background-color: var(--light-gray); /* Lichte zebra-strepen */
+}
+
+.meetings-table tbody tr:hover {
+    background-color: #e0f2f1; /* Lichte groen/blauw tint bij hover */
+}
+
+.meetings-table tbody tr:last-child td {
+    border-bottom: none; /* Geen rand bij de laatste rij */
+}
+
+/* --- Responsive Tabel voor Mobiel --- */
+@media (max-width: 768px) {
+    .meetings-table-wrapper {
+        border: none;
+        box-shadow: none;
+    }
+
+    .meetings-table thead {
+        display: none; /* Verberg de tabelkoppen */
+    }
+
+    .meetings-table, 
+    .meetings-table tbody, 
+    .meetings-table tr, 
+    .meetings-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .meetings-table tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden; /* Zorgt dat de inhoud netjes binnen de kaart blijft */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .meetings-table tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .meetings-table td {
+        text-align: right; /* Lijn de content rechts uit */
+        padding-left: 50%; /* Maak ruimte voor het label */
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .meetings-table td:last-child {
+        border-bottom: none;
+    }
+
+    .meetings-table td::before {
+        content: attr(data-label); /* Gebruik de data-label als label */
+        position: absolute;
+        left: 15px;
+        width: calc(50% - 30px);
+        text-align: left;
+        font-weight: 600;
+        color: var(--primary-green);
+    }
+}
