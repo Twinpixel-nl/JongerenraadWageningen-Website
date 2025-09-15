@@ -883,3 +883,30 @@ ul { list-style: none; }
 .theme-card .btn {
     margin-top: auto; /* Duwt de knop naar de onderkant */
 }
+/* Verberg de extra rijen standaard */
+    .extra-meeting.hidden {
+        display: none;
+    }
+
+    /* Styling voor de container van de knop */
+    .toggle-button-container {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    /* Styling voor de knop zelf */
+    #toggleMeetingsBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem; /* Ruimte tussen tekst en pijl */
+    }
+
+    /* Styling voor de pijl */
+    #toggleMeetingsBtn .arrow-icon {
+        transition: transform 0.3s ease;
+    }
+
+    /* Roteer de pijl als de knop 'open' is */
+    #toggleMeetingsBtn.open .arrow-icon {
+        transform: rotate(180deg);
+    }

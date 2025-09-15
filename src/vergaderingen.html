@@ -32,7 +32,8 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     {# Loop door de 'datums' lijst in het 'rooster' databestand #}
                     {# De 'rooster' variabele komt vanzelf beschikbaar uit 'src/_data/rooster.json' #}
                     {%- for item in rooster.datums -%}
-                    <tr>
+                    {# --- NIEUW: Voeg een class toe als het de 9e rij of later is --- #}
+                    <tr {%- if loop.index0 >= 8 %} class="extra-meeting hidden" {%- endif %}>
                         <td data-label="Datum:">{{ item.datum }}</td>
                         <td data-label="Vergadering:">{{ rooster.vaste_titel }}</td>
                         <td data-label="Notulist / Opening:">{{ item.notulist }}</td>
@@ -45,6 +46,19 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     {%- endfor -%}
                 </tbody>
             </table>
+            
+            {# --- NIEUW: Voeg de "Zie meer" knop toe als er meer dan 8 vergaderingen zijn --- #}
+            {%- if rooster.datums | length > 8 -%}
+            <div class="toggle-button-container">
+                <button id="toggleMeetingsBtn" class="btn btn-secondary">
+                    <span>Zie meer</span>
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+            {%- endif -%}
+
         </div>
     </div>
 </section>
@@ -53,24 +67,52 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
 <section class="meetings-info-section content-section" style="background-color: var(--light-gray);">
     <div class="container">
         <h2 class="section-title fade-in">Hoe werken onze vergaderingen?</h2>
-        
-        {# Dit is de grid-container voor de twee kaarten #}
         <div class="info-grid">
-            
-            {# Kaart 1: Open voor iedereen #}
             <div class="info-card fade-in">
                 <h3>Open voor iedereen</h3>
                 <p>Onze "Grote vergaderingen" zijn openbaar. Dat betekent dat jij als jongere uit Wageningen altijd welkom bent om aan te schuiven, te luisteren en mee te praten. Je hoeft geen lid te zijn!</p>
                 <a href="/contact.html" class="btn btn-primary">Vragen? Neem contact op!</a>
             </div>
-
-            {# Kaart 2: Onderwerp voorstellen #}
             <div class="info-card fade-in">
                 <h3>Jouw onderwerp op de agenda?</h3>
                 <p>Loop je ergens tegenaan of heb je een goed idee? Laat het ons weten! We kunnen jouw onderwerp op de agenda zetten voor een van de komende vergaderingen. Stuur ons een bericht en we kijken samen hoe we dit het beste kunnen aanpakken.</p>
                 <a href="/contact.html" class="btn btn-primary">Stel een onderwerp voor</a>
             </div>
-
         </div>
     </div>
 </section>
+
+{# --- NIEUW: Voeg JavaScript toe aan de onderkant van de pagina --- #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Zoek de knop en de rijen die verborgen moeten worden
+    const toggleBtn = document.getElementById('toggleMeetingsBtn');
+    const extraMeetings = document.querySelectorAll('.extra-meeting');
+
+    // Als de knop niet bestaat op de pagina (omdat er minder dan 8 vergaderingen zijn), doe dan niks.
+    if (!toggleBtn) {
+        return;
+    }
+
+    const btnText = toggleBtn.querySelector('span');
+    const btnArrow = toggleBtn.querySelector('.arrow-icon');
+
+    // Voeg een 'click' event listener toe aan de knop
+    toggleBtn.addEventListener('click', function() {
+        // Toggle de 'open' class op de knop zelf (voor de pijlrotatie)
+        this.classList.toggle('open');
+
+        // Toggle de 'hidden' class op elke extra vergaderrij
+        extraMeetings.forEach(row => {
+            row.classList.toggle('hidden');
+        });
+
+        // Werk de tekst van de knop bij op basis van de 'open' status
+        if (this.classList.contains('open')) {
+            btnText.textContent = 'Zie minder';
+        } else {
+            btnText.textContent = 'Zie meer';
+        }
+    });
+});
+</script>
