@@ -191,17 +191,55 @@ ul { list-style: none; }
 
 /* --- Hero Sectie --- */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/Wageningen.jpg') no-repeat center center/cover;
+    /* De algemene stijlen die voor elke hero gelden */
     color: var(--white);
-    height: 90vh;
+    height: 50vh; /* Iets minder hoog voor subpagina's, voelt rustiger */
     display: flex;
     align-items: center;
     text-align: center;
+    background-size: cover;
+    background-position: center center;
+    position: relative; /* Nodig voor de overlay */
 }
 
+/* De donkere overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Donkere laag */
+    z-index: 1;
+}
+
+/* De content moet BOVEN de overlay komen */
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Specifieke hero voor de homepage */
+.hero-home {
+    background-image: url('/images/Wageningen.jpg'); /* Pad aangepast naar je nieuwe structuur */
+    height: 90vh; /* Homepage mag een grotere hero hebben */
+}
+
+/* Specifieke hero's voor de andere pagina's */
+.hero-over-ons {
+    background-image: url('/images/over-ons-hero.jpg'); /* Zorg dat dit bestand bestaat! */
+}
+.hero-themas {
+    background-image: url('/images/themas-hero.jpg');   /* Zorg dat dit bestand bestaat! */
+}
+.hero-vergaderingen {
+    background-image: url('/images/stadshuis.jpg'); /* Zorg dat dit bestand bestaat! */
+}
+.hero-contact {
+    background-image: url('/images/contact-hero.jpg'); /* Zorg dat dit bestand bestaat! */
 }
 
 .hero-content p {
