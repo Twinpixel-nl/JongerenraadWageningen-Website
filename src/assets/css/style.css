@@ -70,6 +70,7 @@ ul { list-style: none; }
     border-radius: 50px;
     font-weight: 600;
     transition: var(--transition-speed);
+    border: 2px solid transparent;
 }
 
 .btn-primary {
@@ -84,7 +85,7 @@ ul { list-style: none; }
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--white);
+    color: var(--primary-green);
     border-color: var(--white);
 }
 
