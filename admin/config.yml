@@ -16,6 +16,7 @@ collections:
     create: true # Sta toe dat nieuwe leden worden aangemaakt
     slug: "{{naam}}" # Maakt bestandsnaam van de naam (bv. 'Twan Meurs' -> 'twan-meurs.md')
     fields: # De invulvelden voor elk lid
+      - {label: "Volgorde (lager = hoger op de pagina)", name: "volgorde", widget: "number", default: 100}
       - {label: "Naam", name: "naam", widget: "string"}
       - {label: "Functie", name: "functie", widget: "string"}
       - {label: "Foto", name: "foto", widget: "image"}

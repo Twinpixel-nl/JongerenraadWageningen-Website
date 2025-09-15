@@ -34,7 +34,7 @@ description: "Maak kennis met de leden van de Jongerenraad Wageningen en ontdek 
         <h2 class="section-title fade-in">Maak kennis met de Raad</h2>
         <div class="members-grid">
             {# Loop door alle items in de 'leden' collectie, nieuwste eerst #}
-            {%- for lid in collections.leden | reverse -%}
+            {%- for lid in collections.ledenGesorteerd -%}
             <a href="{{ lid.url }}" class="member-card-link fade-in">
                 <article class="member-card">
                     <div class="member-card-photo">
