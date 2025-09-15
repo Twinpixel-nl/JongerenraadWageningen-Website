@@ -660,6 +660,8 @@ ul { list-style: none; }
 }
 
 /* --- Vergaderingen Pagina: Tabel Stijlen --- */
+
+
 .meetings-table-wrapper {
     width: 100%;
     overflow-x: auto; /* Zorgt voor horizontaal scrollen als het echt niet past */
@@ -792,4 +794,54 @@ ul { list-style: none; }
 .info-card .btn {
     margin-top: auto;        /* Duwt de knop naar de bodem */
     align-self: flex-start;  /* Voorkomt dat de knop uitrekt */
+}
+/* --- Thema's Pagina --- */
+.themes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .themes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+.theme-card {
+    background-color: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-speed);
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.theme-card-icon {
+    font-size: 3rem;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.theme-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.theme-card p {
+    flex-grow: 1; /* Zorgt dat alle kaarten even hoog lijken door de tekst de ruimte te laten vullen */
+    margin-bottom: 1.5rem;
+}
+
+.theme-card .btn {
+    margin-top: auto; /* Duwt de knop naar de onderkant */
 }
