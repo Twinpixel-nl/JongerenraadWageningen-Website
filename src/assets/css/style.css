@@ -91,7 +91,7 @@ ul { list-style: none; }
 
 .btn-secondary:hover {
     background-color: var(--white);
-    color: var(--primary-green);
+    color: #45a049;
 }
 
 .btn-light {
