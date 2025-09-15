@@ -555,3 +555,82 @@ ul { list-style: none; }
     color: var(--primary-green);
     margin-top: 0;
 }
+/* --- Contact Pagina Stijlen --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 2fr 1fr; /* Formulier breder dan de info */
+    }
+}
+
+.contact-form-wrapper h2, .contact-info-wrapper h2 {
+    margin-top: 0;
+}
+
+/* Formulier stijlen */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Info lijst stijlen */
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.contact-info-list i {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    margin-right: 1.5rem;
+    margin-top: 0.25rem;
+    width: 30px;
+    text-align: center;
+}
+
+.contact-info-list strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.contact-info-list a,
+.contact-info-list p {
+    margin: 0;
+}

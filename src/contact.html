@@ -1,0 +1,95 @@
+---
+layout: "layout.html"
+title: "Contact - Jongerenraad Wageningen"
+description: "Heb je een vraag, een idee, of wil je meedoen? Neem contact op met de Jongerenraad Wageningen via ons formulier of social media."
+---
+
+{# Sectie 1: Paginakop met introductie #}
+<section class="page-header content-section">
+    <div class="container">
+        <h1 class="section-title fade-in">Neem Contact Op</h1>
+        <p class="section-intro fade-in">We horen graag van je! Of je nu een vraag hebt, een briljant idee wilt delen, of gewoon hallo wilt zeggen, dit is de plek.</p>
+    </div>
+</section>
+
+{# Sectie 2: Contactgrid met formulier en info #}
+<section class="contact-page-section content-section">
+    <div class="container">
+        <div class="contact-grid">
+            
+            {# Linkerkolom: Het contactformulier #}
+            <div class="contact-form-wrapper fade-in">
+                <h2>Stuur ons een bericht</h2>
+                <p>Vul het onderstaande formulier in en we nemen zo snel mogelijk contact met je op.</p>
+
+                {# --- HET BELANGRIJKSTE DEEL: HET NETLIFY FORMULIER --- #}
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    
+                    <!-- Verborgen input voor Netlify's bot-detectie -->
+                    <p class="hidden">
+                        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                    </p>
+                    
+                    <!-- Naam veld -->
+                    <div class="form-group">
+                        <label for="name">Je Naam</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <!-- E-mail veld -->
+                    <div class="form-group">
+                        <label for="email">Je E-mailadres</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <!-- Onderwerp veld (optioneel) -->
+                    <div class="form-group">
+                        <label for="subject">Onderwerp</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    
+                    <!-- Bericht veld -->
+                    <div class="form-group">
+                        <label for="message">Je Bericht</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <!-- Verzendknop -->
+                    <button type="submit" class="btn btn-primary">Verstuur Bericht</button>
+                </form>
+            </div>
+
+            {# Rechterkolom: Andere contactopties #}
+            <div class="contact-info-wrapper fade-in">
+                <h2>Andere manieren</h2>
+                <p>Je kunt ons ook bereiken via e-mail of onze social media kanalen.</p>
+                
+                <ul class="contact-info-list">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>E-mail</strong>
+                            <a href="mailto:info@jongerenraadwageningen.nl">info@jongerenraadwageningen.nl</a>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <strong>Instagram</strong>
+                            <a href="https://www.instagram.com/jr.wageningen/" target="_blank">@jr.wageningen</a>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Vergaderingen</strong>
+                            <p>De beste manier om mee te praten is door langs te komen! Iedereen is welkom.</p>
+                            <a href="/vergaderingen.html" class="card-link">Bekijk de data</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
