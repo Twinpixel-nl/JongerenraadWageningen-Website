@@ -1,4 +1,5 @@
 ---
+volgorde: 1
 naam: Twan Meurs
 functie: Voorzitter
 foto: /assets/images/uploads/twan-hoofd.jpg
