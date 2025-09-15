@@ -221,20 +221,35 @@ ul { list-style: none; }
     text-align: center;
 }
 
-/* --- Leden Sectie --- */
-.members-section { background-color: var(--light-gray); }
+/* --- Leden Sectie (Homepage & Over Ons) --- */
+.members-section {
+    background-color: var(--light-gray);
+}
+
 .members-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Behoudt de responsive grid */
     gap: 2rem;
 }
+
+.member-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 .member-card {
     background: var(--white);
     text-align: center;
-    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: var(--transition-speed);
+    overflow: hidden; /* Zorgt dat de foto binnen de kaart blijft */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0; /* Verwijder de oude padding */
 }
 
 .member-card:hover {
@@ -242,18 +257,34 @@ ul { list-style: none; }
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-.member-card img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 4px solid var(--primary-green);
+/* De container voor de foto bovenaan de kaart */
+.member-card-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Maakt de foto container vierkant */
+    overflow: hidden;
 }
 
-.member-card p {
-    color: var(--dark-gray);
+/* De afbeelding zelf binnen de container */
+.member-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zorgt dat de foto niet vervormt */
+    /* Verwijder de oude border, border-radius, etc. */
+}
+
+/* De tekst-informatie onder de foto */
+.member-card-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.member-card-info h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.member-card-info p {
     margin: 0;
+    color: var(--dark-gray);
 }
 
 /* --- Thema's Sectie --- */
@@ -500,4 +531,27 @@ ul { list-style: none; }
 .btn-accent:hover {
   background: #2E7D32;
   color: #fff;
+}
+/* --- Over Ons Pagina: Visie & Missie --- */
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .vision-mission-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.vision-card, .mission-card {
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: var(--light-gray);
+}
+
+.vision-card h2, .mission-card h2 {
+    color: var(--primary-green);
+    margin-top: 0;
 }

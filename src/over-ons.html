@@ -1,30 +1,70 @@
 ---
 layout: "layout.html"
-title: "Onze Leden - Jongerenraad Wageningen"
+title: "Over Ons - Jongerenraad Wageningen"
+description: "Maak kennis met de leden van de Jongerenraad Wageningen en ontdek waar wij voor staan. Jouw stem in de lokale politiek."
 ---
 
+{# Sectie 1: Paginakop met introductie #}
 <section class="page-header content-section">
     <div class="container">
-        <h1 class="section-title">Maak kennis met de Raad</h1>
-        <p class="section-intro">Dit zijn de jongeren die zich inzetten om jouw stem te vertegenwoordigen in Wageningen. Klik op een lid om meer te weten te komen.</p>
+        <h1 class="section-title fade-in">Wie zijn wij?</h1>
+        <p class="section-intro fade-in">Wij zijn de brug tussen de jongeren van Wageningen en de gemeente. We zorgen ervoor dat jouw stem gehoord wordt waar de beslissingen worden genomen.</p>
     </div>
 </section>
 
-<section class="members-page-section content-section">
+{# Sectie 2: Visie & Missie #}
+<section class="vision-mission-section content-section">
     <div class="container">
+        <div class="vision-mission-grid">
+            <div class="vision-card fade-in">
+                <h2>Onze Missie</h2>
+                <p>De belangen van alle jongeren in Wageningen (15-27 jaar) vertegenwoordigen. We adviseren de gemeenteraad gevraagd en ongevraagd over onderwerpen die voor jongeren belangrijk zijn, van wonen en veiligheid tot duurzaamheid en welzijn.</p>
+            </div>
+            <div class="mission-card fade-in">
+                <h2>Onze Visie</h2>
+                <p>Een stad waarin jongeren zich gehoord, gewaardeerd en betrokken voelen. We streven naar een Wageningen waar jongeren actief meedenken en meebeslissen over hun eigen toekomst en leefomgeving.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Sectie 3: De Ledenlijst #}
+<section class="members-page-section content-section" style="background-color: var(--light-gray);">
+    <div class="container">
+        <h2 class="section-title fade-in">Maak kennis met de Raad</h2>
         <div class="members-grid">
-            {# Loop door alle items in de 'leden' collectie #}
+            {# Loop door alle items in de 'leden' collectie, nieuwste eerst #}
             {%- for lid in collections.leden | reverse -%}
-            <a href="{{ lid.url }}" class="member-card-link">
+            <a href="{{ lid.url }}" class="member-card-link fade-in">
                 <article class="member-card">
-                    <img src="{{ lid.data.foto }}" alt="Profielfoto van {{ lid.data.naam }}">
-                    <h3>{{ lid.data.naam }}</h3>
-                    <p>{{ lid.data.functie }}</p>
+                    <div class="member-card-photo">
+                        <img src="{{ lid.data.foto }}" alt="Profielfoto van {{ lid.data.naam }}">
+                    </div>
+                    <div class="member-card-info">
+                        <h3>{{ lid.data.naam }}</h3>
+                        <p>{{ lid.data.functie }}</p>
+                    </div>
                 </article>
             </a>
             {%- else -%}
                 <p>Er zijn op dit moment geen leden om weer te geven. Voeg ze toe via het CMS!</p>
             {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+{# Sectie 4: Word Lid! Call to Action #}
+<section class="join-us-section cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="fade-in">Klinkt dit goed? Word ook lid!</h2>
+            <p class="fade-in">
+                Ben jij tussen de 15 en 27 jaar en wil je meepraten over de toekomst van Wageningen? Dan zoeken we jou! 
+                Ervaring is niet nodig, enthousiasme wel. Stuur ons een bericht en kom een keer vrijblijvend kijken.
+            </p>
+            <div class="cta-buttons fade-in">
+                <a href="/contact.html" class="btn btn-light">Ja, ik heb interesse!</a>
+            </div>
         </div>
     </div>
 </section>
