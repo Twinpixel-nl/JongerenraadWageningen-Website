@@ -193,7 +193,7 @@ ul { list-style: none; }
 .hero-section {
     /* De algemene stijlen die voor elke hero gelden */
     color: var(--white);
-    height: 50vh; /* Iets minder hoog voor subpagina's, voelt rustiger */
+    height: 35vh; /* Iets minder hoog voor subpagina's, voelt rustiger */
     display: flex;
     align-items: center;
     text-align: center;
