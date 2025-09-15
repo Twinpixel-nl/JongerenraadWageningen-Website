@@ -191,7 +191,7 @@ ul { list-style: none; }
 
 /* --- Hero Sectie --- */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x1080/4CAF50/FFFFFF?text=Jongeren+in+Wageningen') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/Wageningen.jpg') no-repeat center center/cover;
     color: var(--white);
     height: 90vh;
     display: flex;
