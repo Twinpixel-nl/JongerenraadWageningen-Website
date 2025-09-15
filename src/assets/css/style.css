@@ -230,7 +230,7 @@ ul { list-style: none; }
 
 /* Specifieke hero's voor de andere pagina's */
 .hero-over-ons {
-    background-image: url('/assets/images/over-ons-hero.jpg'); /* Zorg dat dit bestand bestaat! */
+    background-image: url('/assets/images/openavond.jpg'); /* Zorg dat dit bestand bestaat! */
 }
 .hero-themas {
     background-image: url('/assets/images/5mei.jpg');   /* Zorg dat dit bestand bestaat! */
