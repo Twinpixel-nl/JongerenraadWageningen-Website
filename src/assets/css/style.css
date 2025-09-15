@@ -224,22 +224,22 @@ ul { list-style: none; }
 
 /* Specifieke hero voor de homepage */
 .hero-home {
-    background-image: url('/images/Wageningen.jpg'); /* Pad aangepast naar je nieuwe structuur */
+    background-image: url('/assets/images/Wageningen.jpg'); /* Pad aangepast naar je nieuwe structuur */
     height: 90vh; /* Homepage mag een grotere hero hebben */
 }
 
 /* Specifieke hero's voor de andere pagina's */
 .hero-over-ons {
-    background-image: url('/images/over-ons-hero.jpg'); /* Zorg dat dit bestand bestaat! */
+    background-image: url('/assets/images/over-ons-hero.jpg'); /* Zorg dat dit bestand bestaat! */
 }
 .hero-themas {
-    background-image: url('/images/themas-hero.jpg');   /* Zorg dat dit bestand bestaat! */
+    background-image: url('/assets/images/themas-hero.jpg');   /* Zorg dat dit bestand bestaat! */
 }
 .hero-vergaderingen {
-    background-image: url('/images/stadshuis.jpg'); /* Zorg dat dit bestand bestaat! */
+    background-image: url('/assets/images/stadshuis.jpg'); /* Zorg dat dit bestand bestaat! */
 }
 .hero-contact {
-    background-image: url('/images/contact-hero.jpg'); /* Zorg dat dit bestand bestaat! */
+    background-image: url('/assets/images/contact-hero.jpg'); /* Zorg dat dit bestand bestaat! */
 }
 
 .hero-content p {
