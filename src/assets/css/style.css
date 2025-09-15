@@ -758,29 +758,38 @@ ul { list-style: none; }
         color: var(--primary-green);
     }
 }
-/* --- Informatie Blokken (Vergaderingen pagina) --- */
-.info-blocks-wrapper {
-    max-width: 700px; /* Zorgt voor een prettige leesbreedte */
-    margin: 0 auto;   /* Centreert de wrapper */
+/* --- Algemene Info Kaarten (voor o.a. Vergaderingen pagina) --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Standaard op mobiel: 1 kolom (onder elkaar) */
+    gap: 2rem;
+    align-items: stretch; /* DIT IS DE SLEUTEL: Maakt alle kaarten in de rij even hoog */
 }
 
-.info-block {
-    margin-bottom: 3rem; /* Ruimte tussen de blokken */
+/* Op schermen breder dan 768px... */
+@media (min-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr 1fr; /* ...twee kolommen (naast elkaar) */
+    }
 }
 
-.info-block:last-child {
-    margin-bottom: 0;
+.info-card {
+    background-color: var(--white); /* Witte achtergrond voor de kaarten */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;          /* Activeer Flexbox binnen elke kaart */
+    flex-direction: column; /* Zet de inhoud (titel, p, knop) onder elkaar */
+    text-align: left;       /* Zorg dat de tekst links uitgelijnd is */
 }
 
-.info-block h3 {
-    font-size: 1.8rem; /* Maakt de titel iets groter */
-    margin-bottom: 0.75rem;
+.info-card h3 {
+    color: var(--primary-green);
+    margin-top: 0;
 }
 
-.info-block p {
-    margin-bottom: 1.5rem; /* Ruimte tussen de tekst en de knop */
-}
-
-.info-block .btn {
-    display: inline-block; /* Zorgt dat de knop zich gedraagt als een blok */
+/* DEZE REGEL DUWT DE KNOP NAAR DE ONDERKANT */
+.info-card .btn {
+    margin-top: auto;        /* Duwt de knop naar de bodem */
+    align-self: flex-start;  /* Voorkomt dat de knop uitrekt */
 }
