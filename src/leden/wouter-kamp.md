@@ -1,5 +1,5 @@
 ---
-volgorde: 6
+volgorde: 7
 naam: "Wouter Kamp "
 functie: Jongerenwerker Gemeente
 foto: /assets/images/uploads/wouter-e1718278282169.jpg
