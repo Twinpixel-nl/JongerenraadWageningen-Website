@@ -19,6 +19,10 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
     <div class="container">
         <div class="meetings-table-wrapper fade-in">
             <h2 class="table-title">Vergaderrooster van de Jongerenraad Wageningen</h2>
+
+            {# --- AANGEPAST DEEL 1: Maak een variabele met alleen toekomstige data --- #}
+            {%- set futureMeetings = rooster.datums | onlyFutureDates -%}
+
             <table class="meetings-table">
                 <thead>
                     <tr>
@@ -29,10 +33,8 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     </tr>
                 </thead>
                 <tbody>
-                    {# Loop door de 'datums' lijst in het 'rooster' databestand #}
-                    {# De 'rooster' variabele komt vanzelf beschikbaar uit 'src/_data/rooster.json' #}
-                    {%- for item in rooster.datums -%}
-                    {# --- NIEUW: Voeg een class toe als het de 9e rij of later is --- #}
+                    {# --- AANGEPAST DEEL 2: Loop door de nieuwe, gefilterde lijst --- #}
+                    {%- for item in futureMeetings -%}
                     <tr {%- if loop.index0 >= 8 %} class="extra-meeting hidden" {%- endif %}>
                         <td data-label="Datum:">{{ item.datum }}</td>
                         <td data-label="Vergadering:">{{ rooster.vaste_titel }}</td>
@@ -41,14 +43,15 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     </tr>
                     {%- else -%}
                     <tr>
-                        <td colspan="4">Er zijn op dit moment geen vergaderingen gepland. Voeg ze toe via het CMS!</td>
+                        {# --- AANGEPAST DEEL 3: Verbeterde boodschap als er niks is --- #}
+                        <td colspan="4">Er zijn op dit moment geen toekomstige vergaderingen gepland. Kom binnenkort terug voor een update!</td>
                     </tr>
                     {%- endfor -%}
                 </tbody>
             </table>
             
-            {# --- NIEUW: Voeg de "Zie meer" knop toe als er meer dan 8 vergaderingen zijn --- #}
-            {%- if rooster.datums | length > 8 -%}
+            {# --- AANGEPAST DEEL 4: Check de lengte van de gefilterde lijst --- #}
+            {%- if futureMeetings | length > 8 -%}
             <div class="toggle-button-container">
                 <button id="toggleMeetingsBtn" class="btn btn-secondary">
                     <span>Zie meer</span>
@@ -63,7 +66,7 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
     </div>
 </section>
 
-{# Sectie 3: Extra informatie en oproep tot deelname #}
+{# Sectie 3: Extra informatie en oproep tot deelname (blijft hetzelfde) #}
 <section class="meetings-info-section content-section" style="background-color: var(--light-gray);">
     <div class="container">
         <h2 class="section-title fade-in">Hoe werken onze vergaderingen?</h2>
@@ -82,7 +85,7 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
     </div>
 </section>
 
-{# --- NIEUW: Voeg JavaScript toe aan de onderkant van de pagina --- #}
+{# JavaScript (blijft hetzelfde) #}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Zoek de knop en de rijen die verborgen moeten worden
