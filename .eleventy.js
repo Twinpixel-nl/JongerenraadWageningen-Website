@@ -4,33 +4,35 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("admin");
 
-eleventyConfig.addFilter("onlyFutureDates", function(dates) {
-        // Krijg de datum van vandaag, maar dan vastgezet op middernacht UTC.
-        // Dit voorkomt tijdzoneproblemen en zorgt dat de vergadering van vandaag wordt meegenomen.
-        const now = new Date();
-        const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  // --- DEZE FILTER IS NU GECORRIGEERD ---
+  // Filtert de datums zodat alleen vergaderingen van vandaag en in de toekomst worden getoond.
+  eleventyConfig.addFilter("onlyFutureDates", function(dates) {
+      // Stap 1: Krijg de datum van vandaag en zet de tijd op middernacht.
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // 'today' is nu precies middernacht, in de lokale tijdzone.
 
-        return dates.filter(item => {
-            // Controleer of de datum een geldige string is
-            if (!item.datum || typeof item.datum !== 'string') {
-                return false;
-            }
-            
-            // Splits de datumstring (YYYY-MM-DD) op in delen
-            const dateParts = item.datum.split('-');
-            if (dateParts.length !== 3) {
-                // Sla ongeldige formaten over
-                return false;
-            }
-            
-            // Maak een datumobject aan in UTC.
-            // De maand is 0-geïndexeerd in JavaScript, dus we doen -1.
-            const itemDate = new Date(Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2]));
-            
-            // Behoud de vergadering als de datum op of na vandaag (middernacht UTC) is.
-            return itemDate >= today;
-        });
-    });
+      return dates.filter(item => {
+          // Controleer of er een geldige datum is
+          if (!item.datum || typeof item.datum !== 'string') {
+              return false;
+          }
+
+          // Stap 2: Splits de 'YYYY-MM-DD' datum en maak een nieuw datumobject.
+          // Dit dwingt JavaScript om de datum als 'lokaal' te zien, net als 'today'.
+          const parts = item.datum.split('-');
+          if (parts.length !== 3) {
+            return false;
+          }
+          // Let op: maand is 0-gebaseerd in JS (0=jan), dus -1.
+          const itemDate = new Date(parts[0], parts[1] - 1, parts[2]);
+
+          // Stap 3: Vergelijk de twee datums.
+          // Behoud het item als de vergaderdatum op of na vandaag is.
+          return itemDate >= today;
+      });
+  });
+  // --- EINDE GECORRIGEERDE FILTER ---
+
   // --- Custom Collection voor Leden ---
   // Dit maakt een nieuwe lijst 'ledenGesorteerd' aan die we in de templates kunnen gebruiken.
   // De lijst is gesorteerd op basis van het 'volgorde'-veld in de front matter van elk lid.
