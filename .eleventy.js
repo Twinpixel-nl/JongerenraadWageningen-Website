@@ -4,6 +4,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("admin");
 
+  eleventyConfig.addFilter("onlyFutureDates", function(dates) {
+        const now = new Date();
+        // Zet de tijd op 00:00:00 om de vergadering van vandaag ook mee te nemen
+        now.setHours(0, 0, 0, 0);
+
+        return dates.filter(item => {
+            const itemDate = new Date(item.datum);
+            return itemDate >= now;
+        });
+    });
   // --- Custom Collection voor Leden ---
   // Dit maakt een nieuwe lijst 'ledenGesorteerd' aan die we in de templates kunnen gebruiken.
   // De lijst is gesorteerd op basis van het 'volgorde'-veld in de front matter van elk lid.
