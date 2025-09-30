@@ -4,14 +4,31 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("admin");
 
-  eleventyConfig.addFilter("onlyFutureDates", function(dates) {
+eleventyConfig.addFilter("onlyFutureDates", function(dates) {
+        // Krijg de datum van vandaag, maar dan vastgezet op middernacht UTC.
+        // Dit voorkomt tijdzoneproblemen en zorgt dat de vergadering van vandaag wordt meegenomen.
         const now = new Date();
-        // Zet de tijd op 00:00:00 om de vergadering van vandaag ook mee te nemen
-        now.setHours(0, 0, 0, 0);
+        const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 
         return dates.filter(item => {
-            const itemDate = new Date(item.datum);
-            return itemDate >= now;
+            // Controleer of de datum een geldige string is
+            if (!item.datum || typeof item.datum !== 'string') {
+                return false;
+            }
+            
+            // Splits de datumstring (YYYY-MM-DD) op in delen
+            const dateParts = item.datum.split('-');
+            if (dateParts.length !== 3) {
+                // Sla ongeldige formaten over
+                return false;
+            }
+            
+            // Maak een datumobject aan in UTC.
+            // De maand is 0-geïndexeerd in JavaScript, dus we doen -1.
+            const itemDate = new Date(Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2]));
+            
+            // Behoud de vergadering als de datum op of na vandaag (middernacht UTC) is.
+            return itemDate >= today;
         });
     });
   // --- Custom Collection voor Leden ---
