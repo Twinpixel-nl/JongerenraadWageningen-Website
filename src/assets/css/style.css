@@ -388,12 +388,35 @@ ul { list-style: none; }
     padding: 60px 0 20px 0;
 }
 
+
+/* --- CSS voor de Footer --- */
+
 .footer-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
+    /* Verdeel de ruimte over 4 kolommen op grote schermen */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* Ruimte tussen de kolommen */
+    padding-bottom: 20px;
+}
+
+/* Zorg ervoor dat de footer op kleinere schermen goed wordt weergegeven */
+@media (max-width: 992px) {
+    .footer-grid {
+        /* 2 kolommen op tablets */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        /* 1 kolom op mobiele telefoons */
+        grid-template-columns: 1fr; 
+        text-align: center; /* Centreer de inhoud voor een nettere look */
+    }
+
+    .footer-about, .footer-links, .footer-social, .footer-location {
+        margin-bottom: 20px;
+    }
 }
 
 .logo-footer img { height: 120px; margin-bottom: 1rem; }
