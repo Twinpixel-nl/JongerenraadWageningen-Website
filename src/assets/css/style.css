@@ -910,7 +910,15 @@ ul { list-style: none; }
 }
 
 /* --- Vergaderingen Pagina: Tabel Stijlen --- */
-
+/* Styling voor de subtitel onder de tabeltitel */
+.table-subtitle {
+    text-align: center;
+    margin-top: -15px; /* Brengt de tekst dichter bij de titel */
+    margin-bottom: 25px; /* Voegt wat extra ruimte toe boven de tabel */
+    color: #6c757d; /* Een iets lichtere kleur dan de standaard tekst */
+    font-size: 0.95em;
+    font-style: italic;
+}
 
 .meetings-table-wrapper {
     width: 100%;
