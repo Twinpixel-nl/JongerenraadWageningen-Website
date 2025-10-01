@@ -524,6 +524,56 @@ ul { list-style: none; }
         right: auto;
         left: 12px;
     }
+}/* --- Sectie: Wat We Hebben Bereikt (Compacte Grid) --- */
+.achievements-section {
+    background-color: #f8f9fa; /* Lichte achtergrond om de sectie te onderscheiden */
+}
+
+/* De grid container */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Twee kolommen op grotere schermen */
+    gap: 30px; /* Ruimte tussen de kaarten */
+}
+
+/* De individuele kaart voor een prestatie */
+.achievement-card {
+    display: flex;
+    align-items: flex-start; /* Lijn de bovenkant van icoon en tekst uit */
+    gap: 20px; /* Ruimte tussen het icoon en de tekst */
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    /* Subtiele groene accentlijn om de websitekleur terug te laten komen */
+    border-left: 4px solid var(--primary-color); 
+}
+
+/* De container voor het icoon */
+.achievement-icon {
+    flex-shrink: 0; /* Zorgt dat het icoon niet krimpt */
+    font-size: 2rem; /* Maakt het icoon groter */
+    color: var(--primary-color); /* Gebruikt de primaire (groene) kleur van je site */
+    margin-top: 5px; /* Lijn het icoon iets beter uit met de titel */
+}
+
+/* Styling voor de tekst naast het icoon */
+.achievement-text h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.15em;
+}
+
+.achievement-text p {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive aanpassing voor mobiele schermen */
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: 1fr; /* Eén kolom op mobiel */
+    }
 }
 /* --- Footer --- */
 .footer {
