@@ -396,7 +396,7 @@ ul { list-style: none; }
     display: grid;
     /* De 3e kolom (contact/locatie) krijgt meer ruimte */
     grid-template-columns: 1fr 1fr 1fr; 
-    gap: 30px;
+    gap: 20px;
     padding-bottom: 20px;
 }
 
