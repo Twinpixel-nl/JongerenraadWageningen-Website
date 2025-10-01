@@ -20,11 +20,6 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
         <div class="meetings-table-wrapper fade-in">
             <h2 class="table-title">Vergaderrooster van de Jongerenraad Wageningen</h2>
 
-            {# Laad het vergaderrooster uit de _data map #}
-            {%- set rooster = collections.data.rooster[0] -%}
-
-            {# --- BELANGRIJK: We gaan hier een filter toepassen om alleen toekomstige data te tonen --- #}
-
             {# --- AANGEPAST DEEL 1: Maak een variabele met alleen toekomstige data --- #}
             {%- set futureMeetings = rooster.datums | onlyFutureDates -%}
 
@@ -32,7 +27,7 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                 <thead>
                     <tr>
                         <th>Datum</th>
-                        <th>Activiteit</th>
+                        <th>Vergadering</th>
                         <th>Notulist / Opening</th>
                         <th>Locatie</th>
                     </tr>
@@ -42,7 +37,7 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     {%- for item in futureMeetings -%}
                     <tr {%- if loop.index0 >= 8 %} class="extra-meeting hidden" {%- endif %}>
                         <td data-label="Datum:">{{ item.datum }}</td>
-                        <td data-label="Activiteit:">{{ rooster.vaste_titel }}</td>
+                        <td data-label="Vergadering:">{{ rooster.vaste_titel }}</td>
                         <td data-label="Notulist / Opening:">{{ item.notulist }}</td>
                         <td data-label="Locatie:">{{ rooster.vaste_locatie }}</td>
                     </tr>
