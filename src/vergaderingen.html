@@ -43,7 +43,7 @@ description: "Bekijk ons vergaderrooster en kom langs! Iedereen is welkom om mee
                     {%- for item in futureMeetings -%}
                     <tr {%- if loop.index0 >= 8 %} class="extra-meeting hidden" {%- endif %}>
                         <td data-label="Datum:">{{ item.datum }}</td>
-                        <td data-label="Vergadering:">{{ rooster.vaste_titel }}</td>
+                        <td data-label="Activiteit:">{{ rooster.vaste_titel }}</td>
                         <td data-label="Notulist / Opening:">{{ item.notulist }}</td>
                         <td data-label="Locatie:">{{ rooster.vaste_locatie }}</td>
                     </tr>
