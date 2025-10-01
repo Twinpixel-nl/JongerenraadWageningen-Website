@@ -391,31 +391,76 @@ ul { list-style: none; }
 
 /* --- CSS voor de Footer --- */
 
+/* Behoud je 3-koloms grid, maar geef de laatste kolom meer ruimte */
 .footer-grid {
     display: grid;
-    /* Verdeel de ruimte over 4 kolommen op grote schermen */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px; /* Ruimte tussen de kolommen */
+    /* De 3e kolom (contact/locatie) krijgt meer ruimte */
+    grid-template-columns: 1fr 1fr 1.5fr; 
+    gap: 30px;
     padding-bottom: 20px;
 }
 
-/* Zorg ervoor dat de footer op kleinere schermen goed wordt weergegeven */
+/* Nieuwe styling voor de gecombineerde contact/locatie sectie */
+.footer-contact-location h4 {
+    margin-bottom: 15px; /* Ruimte onder de hoofdtitel */
+}
+
+.footer-contact-location h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1em; /* Iets kleiner dan de h4 */
+}
+
+/* Gebruik flexbox om de social media en kaart naast elkaar te zetten */
+.contact-grid {
+    display: flex;
+    gap: 20px; /* Ruimte tussen de twee blokken */
+    align-items: flex-start; /* Lijn de bovenkanten uit */
+}
+
+.contact-map {
+    flex-grow: 1; /* Laat de kaart de resterende ruimte vullen */
+}
+
+.contact-map p {
+    font-size: 0.9em;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* Responsive aanpassingen */
 @media (max-width: 992px) {
     .footer-grid {
-        /* 2 kolommen op tablets */
-        grid-template-columns: repeat(2, 1fr); 
+        /* Op tablets: twee kolommen */
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Zorg dat de contact/locatie sectie de volledige breedte inneemt */
+    .footer-contact-location {
+        grid-column: 1 / -1; 
     }
 }
 
 @media (max-width: 768px) {
     .footer-grid {
-        /* 1 kolom op mobiele telefoons */
-        grid-template-columns: 1fr; 
-        text-align: center; /* Centreer de inhoud voor een nettere look */
+        /* Op mobiel: één kolom */
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 
-    .footer-about, .footer-links, .footer-social, .footer-location {
-        margin-bottom: 20px;
+    .social-icons {
+        justify-content: center; /* Centreer social iconen op mobiel */
+    }
+    
+    .contact-grid {
+        /* Op mobiel: zet de blokken onder elkaar */
+        flex-direction: column;
+        align-items: center; /* Centreer de blokken */
+    }
+
+    .contact-map {
+        width: 100%; /* Zorg dat de kaart de volledige breedte pakt */
+        margin-top: 20px; /* Voeg wat ruimte toe boven de kaart */
     }
 }
 
