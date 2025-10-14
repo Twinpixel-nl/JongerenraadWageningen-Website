@@ -8,9 +8,11 @@ eleventyExcludeFromCollections: true
   {%- if page.url and page.url != "/404.html" %}
   <url>
     <loc>https://jrwageningen.nl{{ page.url | url }}</loc>
-    {%- if page.date %}<lastmod>{{ page.date | date("yyyy-MM-dd") }}</lastmod>{% endif %}
-    <changefreq>{{ page.url == "/" ? "weekly" : "monthly" }}</changefreq>
-    <priority>{{ page.url == "/" ? "1.0" : "0.7" }}</priority>
+    {%- if page.date %}
+      <lastmod>{{ page.date | date("yyyy-MM-dd") }}</lastmod>
+    {%- endif %}
+    <changefreq>{% if page.url == "/" %}weekly{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if page.url == "/" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {%- endif %}
 {%- endfor %}
