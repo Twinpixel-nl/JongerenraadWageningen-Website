@@ -29,3 +29,13 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
+
+const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
+
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginSitemap, {
+    sitemap: {
+      hostname: "https://jrwageningen.nl",
+    },
+  });
+};

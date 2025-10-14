@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Twinpixel-nl/JongerenraadWageningen-Website#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "@quasibit/eleventy-plugin-sitemap": "^2.2.0"
   }
 }
