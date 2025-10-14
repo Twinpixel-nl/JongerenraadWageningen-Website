@@ -1,62 +1,34 @@
-// .eleventy.js
+const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
-  
-  // Kopieer de 'assets' en 'admin' mappen naar de uiteindelijke site.
-  eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("admin");
-
-  // --- FILTER VOOR TOEKOMSTIGE DATUMS (MET DE JUISTE DATUM-VOLGORDE) ---
-  eleventyConfig.addFilter("onlyFutureDates", function(dates) {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      return dates.filter(item => {
-          if (!item.datum || typeof item.datum !== 'string') {
-              return false;
-          }
-
-          // Splits de datum "DD-MM-YYYY" in ["DD", "MM", "YYYY"]
-          const parts = item.datum.split('-');
-          if (parts.length !== 3) {
-            return false;
-          }
-          
-          // --- DEZE REGEL IS DE OPLOSSING ---
-          // We bouwen de datum nu op in de juiste volgorde: Jaar, Maand, Dag
-          // parts[2] = Jaar, parts[1] = Maand, parts[0] = Dag
-          const itemDate = new Date(parts[2], parts[1] - 1, parts[0]);
-
-          return itemDate >= today;
-      });
+  // --- Plugins ---
+  eleventyConfig.addPlugin(pluginSitemap, {
+    sitemap: {
+      hostname: "https://jrwageningen.nl", // basis-URL van je site
+    },
   });
-  // --- EINDE FILTER ---
+
+  // --- Bestanden die direct meegaan naar de uiteindelijke site ---
+  eleventyConfig.addPassthroughCopy("src/assets");       // afbeeldingen, css, etc.
+  eleventyConfig.addPassthroughCopy("admin");            // Netlify CMS admin-dashboard
+  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" }); // robots.txt kopiëren naar root van _site
 
   // --- Custom Collection voor Leden ---
   eleventyConfig.addCollection("ledenGesorteerd", function(collectionApi) {
     return collectionApi.getFilteredByTag("leden").sort(function(a, b) {
+      // Sorteer op 'volgorde' uit front matter
       return (a.data.volgorde || 999) - (b.data.volgorde || 999);
     });
   });
 
-  // --- Algemene Configuratie ---
+  // --- Algemene configuratie ---
   return {
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     dir: {
-      input: "src",
-      output: "_site",
-      includes: "_includes"
+      input: "src",         // bronbestanden
+      output: "_site",      // uiteindelijke buildmap
+      includes: "_includes" // herbruikbare layouts en partials
     }
   };
-};
-
-const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
-
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(pluginSitemap, {
-    sitemap: {
-      hostname: "https://jrwageningen.nl",
-    },
-  });
 };
