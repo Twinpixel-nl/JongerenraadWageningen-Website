@@ -75,43 +75,65 @@
         {{ content | safe }}
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="/" class="logo-footer">
-                        {# Ik heb de dubbele bestandsnaam gecorrigeerd #}
-                        <img src="/assets/images/Logo transparant.png" alt="Logo Jongerenraad Wageningen">
-                    </a>
-                    <p>Jouw stem in de lokale politiek van Wageningen.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigatie</h4>
-                    <ul>
-                        <li><a href="/over-ons.html">Over Ons</a></li>
-                        <li><a href="/thema's.html">Thema's</a></li>
-                        <li><a href="/vergaderingen.html">Vergaderingen</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Volg ons</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/jr.wageningen/" aria-label="Volg ons op Instagram"><i class="fab fa-instagram"></i></a>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="/" class="logo-footer">
+                    <img src="/assets/images/Logo transparant.png" alt="Logo Jongerenraad Wageningen">
+                </a>
+                <p>Jouw stem in de lokale politiek van Wageningen.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigatie</h4>
+                <ul>
+                    <li><a href="/over-ons.html">Over Ons</a></li>
+                    <li><a href="/thema's.html">Thema's</a></li>
+                    <li><a href="/vergaderingen.html">Vergaderingen</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- AANGEPASTE SECTIE VOOR SOCIAL MEDIA EN KAART -->
+            <div class="footer-contact-location">
+                <h4>Contact & Locatie</h4>
+                <div class="contact-grid">
+                    <div class="contact-map">
+                        <h5>Bezoek ons</h5>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.752312952458!2d5.66500507703356!3d51.96818197192138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7ab4f16b2ef31%3A0x605c3165b533e1c!2sGemeentehuis%20Wageningen!5e0!3m2!1snl!2snl!4v1672665600000!5m2!1snl!2snl"
+                            width="100%"
+                            height="120"
+                            style="border:0; border-radius: 8px;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Kaart van Gemeentehuis Wageningen">
+                        </iframe>
+                        <p>Markt 22, 6701 CZ Wageningen</p>
+                    </div>
+                    <div class="contact-social">
+                        <h5>Volg ons</h5>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/jr.wageningen/" aria-label="Volg ons op Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>
-                  &copy; 2025 Jongerenraad Wageningen. |
-                  <a href="https://twinpixel.nl/">Made with ❤️ by TwinPixel</a>
-                </p>
-            </div>
-        </div>
-    </footer>
+            <!-- EINDE AANGEPASTE SECTIE -->
 
-    <!-- Algemeen JavaScript-bestand - Correct pad -->
-    <script src="/assets/js/main.js" defer></script>
+        </div>
+        <div class="footer-bottom">
+            <p>
+              &copy; 2025 Jongerenraad Wageningen. |
+              <a href="https://twinpixel.nl/">Made with ❤️ by TwinPixel</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Algemeen JavaScript-bestand - Correct pad -->
+<script src="/assets/js/main.js" defer></script>
 
 </body>
 </html>
