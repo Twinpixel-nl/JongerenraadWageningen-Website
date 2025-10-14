@@ -9,9 +9,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // --- Bestanden die direct meegaan naar de uiteindelijke site ---
-  eleventyConfig.addPassthroughCopy("src/assets");       // afbeeldingen, css, etc.
-  eleventyConfig.addPassthroughCopy("admin");            // Netlify CMS admin-dashboard
-  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" }); // robots.txt kopiëren naar root van _site
+  eleventyConfig.addPassthroughCopy("src/assets"); // afbeeldingen, css, etc.
+  eleventyConfig.addPassthroughCopy("admin");      // Netlify CMS admin-dashboard
+  eleventyConfig.addPassthroughCopy("robots.txt"); // robots.txt staat in de root
 
   // --- Custom Collection voor Leden ---
   eleventyConfig.addCollection("ledenGesorteerd", function(collectionApi) {

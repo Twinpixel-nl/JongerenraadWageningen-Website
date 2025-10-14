@@ -1,25 +1,17 @@
 {
   "name": "jongerenraadwageningen-website",
   "version": "1.0.0",
-  "description": "Dit is de officiële repository voor de nieuwe website van de Jongereraad Wageningen (JRW). De website is ontwikkeld om jongeren in Wageningen te informeren en betrekken bij de gemeentepolitiek.",
-  "main": "index.js",
+  "private": true,
+  "description": "Website Jongerenraad Wageningen",
   "scripts": {
-    "start": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "dev": "eleventy --serve",
+    "build": "eleventy"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Twinpixel-nl/JongerenraadWageningen-Website.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Twinpixel-nl/JongerenraadWageningen-Website/issues"
-  },
-  "homepage": "https://github.com/Twinpixel-nl/JongerenraadWageningen-Website#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@quasibit/eleventy-plugin-sitemap": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=18 <=22"
   }
 }
