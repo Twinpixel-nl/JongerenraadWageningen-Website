@@ -1,49 +1,98 @@
+// .eleventy.js
 module.exports = function(eleventyConfig) {
-  // Passthrough
-  eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("robots.txt");
+  // ============
+  // Passthroughs
+  // ============
+  eleventyConfig.addPassthroughCopy("src/assets");   // /assets/ -> /assets/
+  eleventyConfig.addPassthroughCopy("admin");        // /admin/  -> /admin/
+  eleventyConfig.addPassthroughCopy("robots.txt");   // /robots.txt
 
-  // --- Datumfilters ---
-  // ISO-datum: 2025-06-30 (voor sitemap <lastmod>)
+  // Belangrijk: kopieer rooster.json uit /src naar de root van de output
+  eleventyConfig.addPassthroughCopy({ "src/rooster.json": "rooster.json" });
+  // Watch, zodat wijzigingen in rooster.json direct rebuilden
+  eleventyConfig.addWatchTarget("src/rooster.json");
+
+  // =================
+  // Date util/helpers
+  // =================
+  function parseDate(value) {
+    if (!value) return null;
+    const s = String(value).trim();
+
+    // ISO yyyy-mm-dd(THH:mm)
+    if (/^\d{4}-\d{2}-\d{2}/.test(s)) return new Date(s.length === 10 ? s + "T00:00:00" : s);
+
+    // NL dd-mm-jjjj
+    const m = s.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+    if (m) return new Date(`${m[3]}-${m[2]}-${m[1]}T00:00:00`);
+
+    // Laatste redmiddel
+    const d = new Date(s);
+    return isNaN(d) ? null : d;
+  }
+
+  // =============
+  // Datumfilters
+  // =============
+  // ISO-datum (voor sitemap <lastmod>), geeft "" als ongeldige datum
   eleventyConfig.addFilter("dateISO", (value) => {
-    const d = new Date(value);
-    if (isNaN(d)) return "";
-    return d.toISOString().slice(0, 10); // yyyy-MM-dd in UTC
+    const d = parseDate(value);
+    return d ? d.toISOString().slice(0, 10) : "";
   });
 
-  // NL weergave (optioneel)
+  // NL-weergave (bijv. "30 juni 2025")
   eleventyConfig.addFilter("formatDateNL", (value, opts = {}) => {
-    const d = new Date(value);
-    if (isNaN(d)) return value;
-    return d.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric", ...opts });
+    const d = parseDate(value);
+    if (!d) return value;
+    return d.toLocaleDateString("nl-NL", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      ...opts,
+    });
   });
 
-  // Alleen toekomstige datums + sorteren
-  eleventyConfig.addFilter("onlyFutureDates", function(items, field = "date") {
+  // Alleen toekomstige items (>= vandaag), sorteren oplopend
+  // 'field' is de property met de datum; default 'datum' (NL data)
+  eleventyConfig.addFilter("onlyFutureDates", function(items, field = "datum") {
     if (!Array.isArray(items)) return [];
-    const today = new Date(); today.setHours(0,0,0,0);
-    const toDate = (it) => {
-      const v = (it?.data?.[field]) ?? it?.[field] ?? it?.date;
-      const d = new Date(v);
-      return isNaN(d) ? null : d;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+
+    const getDateFromItem = (it) => {
+      // Ondersteunt data in it.data[field], it[field] of it.date
+      const raw =
+        (it && it.data && it.data[field]) ??
+        (it && it[field]) ??
+        (it && it.date);
+      return parseDate(raw);
     };
+
     return items
-      .map(it => ({ it, d: toDate(it) }))
+      .map(it => ({ it, d: getDateFromItem(it) }))
       .filter(x => x.d && x.d >= today)
-      .sort((a,b) => a.d - b.d)
+      .sort((a, b) => a.d - b.d)
       .map(x => x.it);
   });
 
-  // Collectie
+  // ==========
+  // Collecties
+  // ==========
   eleventyConfig.addCollection("ledenGesorteerd", (c) =>
-    c.getFilteredByTag("leden").sort((a,b) => (a.data.volgorde || 999) - (b.data.volgorde || 999))
+    c.getFilteredByTag("leden").sort(
+      (a, b) => (a.data.volgorde || 999) - (b.data.volgorde || 999)
+    )
   );
 
+  // ======
   // Config
+  // ======
   return {
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
-    dir: { input: "src", output: "_site", includes: "_includes" }
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+    },
   };
 };
