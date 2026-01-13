@@ -11,7 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/rooster.json": "rooster.json" });
   // Watch, zodat wijzigingen in rooster.json direct rebuilden
   eleventyConfig.addWatchTarget("src/rooster.json");
-
+eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   // =================
   // Date util/helpers
   // =================
