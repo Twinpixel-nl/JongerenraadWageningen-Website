@@ -134,9 +134,13 @@
         </div>
         <div class="footer-bottom">
 <p>
-  &copy; {new Date().getFullYear()} Jongerenraad Wageningen. |
+  &copy; <span id="year"></span> Jongerenraad Wageningen. |
   <a href="https://twinpixel.nl/" target="_blank" rel="noopener noreferrer">Made with ❤️ by TwinPixel</a>
 </p>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
         </div>
     </div>
 </footer>
