@@ -1,7 +1,6 @@
 [build]
-  command = "npm run build"
+  command = "npm ci && npm run build"
   publish = "_site"
 
-  [build.environment]
-  # Dit dwingt Netlify om een stabiele Node-versie te gebruiken
+[build.environment]
   NODE_VERSION = "20"
